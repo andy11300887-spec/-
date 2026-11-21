@@ -1,0 +1,7 @@
+source_id,topic,authority,url,check_status,ingest_status,checked_on,notes
+S001,日本自由行基本準備,日本政府觀光局 JNTO,https://www.japan.travel/en/plan/,2026-11-21官方頁內容重新核對,已完成,2026-11-21,S001三頁正式Wiki已寫入；Lint20/20、Query3/3通過；規則式Query非外部LLM審查
+S002,日本交通系統,日本政府觀光局 JNTO,https://www.japan.travel/en/plan/getting-around/,2026-11-21官方頁面核對,已完成（整體授權）,2026-11-21,有逐篇提案/來源摘要/教學/概念；本輪整體授權，非逐篇個別核准；已通過全Wiki Lint55/55及規則式Query12/12；未單篇授權
+S003,IC交通卡,日本政府觀光局 JNTO,https://www.japan.travel/en/plan/ic-card/,2026-11-21官方頁面核對,已完成（整體授權）,2026-11-21,有逐篇提案/來源摘要/教學/概念；本輪整體授權，非逐篇個別核准；已通過全Wiki Lint55/55及規則式Query12/12；未單篇授權
+S004,日本旅遊預算,日本政府觀光局 JNTO,https://www.japan.travel/en/plan/tips-for-budget-travels/,2026-11-21官方頁面核對,已完成（整體授權）,2026-11-21,有逐篇提案/來源摘要/教學/概念；本輪整體授權，非逐篇個別核准；已通過全Wiki Lint55/55及規則式Query12/12；未單篇授權
+S005,日本文化與禮儀,日本政府觀光局 JNTO,https://www.japan.travel/en/plan/custom-manners/,2026-11-21官方頁面核對,已完成（整體授權）,2026-11-21,有逐篇提案/來源摘要/教學/概念；本輪整體授權，非逐篇個別核准；已通過全Wiki Lint55/55及規則式Query12/12；未單篇授權
+S006,日本天氣與季節,日本政府觀光局 JNTO,https://www.japan.travel/en/plan/weather/,2026-11-21官方頁面核對,已完成（整體授權）,2026-11-21,有逐篇提案/來源摘要/教學/概念；本輪整體授權，非逐篇個別核准；已通過全Wiki Lint55/55及規則式Query12/12；未單篇授權

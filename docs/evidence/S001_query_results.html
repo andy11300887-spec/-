@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="旅日手帖LLM Wiki專題文件：S001｜Wiki Query 實際執行報告"><title>S001｜Wiki Query 實際執行報告｜旅日手帖｜日本自由行入門LLM Wiki</title><style>
+:root{--paper:#f7f2e9;--ink:#263936;--red:#a74c43;--muted:#60736c;--line:#ded3c4;--white:#fffdfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 system-ui,"Microsoft JhengHei",sans-serif}
+nav{background:#e7e7db;border-bottom:1px solid var(--line);padding:12px max(calc((100vw - 1120px)/2),22px);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px}
+nav strong{margin-right:auto;letter-spacing:.06em}nav a{color:#7f403a;text-decoration:none}main{max-width:980px;margin:40px auto;padding:36px 46px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3{line-height:1.35;color:#23453d;scroll-margin-top:24px}h1{font-size:31px;margin-top:.2em}h2{font-size:23px;margin-top:1.8em;padding-bottom:7px;border-bottom:1px solid var(--line)}h3{font-size:19px}a{color:#a34b3d;overflow-wrap:anywhere}p,li{line-height:1.85}blockquote{background:#f0f3ec;border-left:4px solid #7b9986;margin:1.4em 0;padding:6px 20px;color:#486158}blockquote p{margin:8px 0}
+code{background:#f1eadd;border-radius:4px;padding:2px 5px;font-size:.91em;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#203d35;color:#f1eee7;border-radius:9px;padding:18px;overflow-x:auto}pre code{color:inherit;background:transparent;padding:0}table{border-collapse:collapse;max-width:100%;width:100%;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#e9ede5}img{max-width:100%;border-radius:8px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 60px}
+@media(max-width:700px){main{margin:15px 10px;padding:24px 18px}nav{padding:12px 16px;gap:12px}h1{font-size:26px}table{display:block;overflow-x:auto}}
+</style></head>
+<body><nav><strong>旅日手帖 · 日本自由行入門</strong><a href="../index.html">成果首頁</a><a href="../slides/deck.html">12頁教學簡報</a><a href="../wiki/index.html">Wiki索引</a><a href="../workflow/graph.html">Graph / Loop</a><a href="../evidence/final_check_report.html">驗收紀錄</a></nav>
+<main><h1>S001｜Wiki Query 實際執行報告</h1>
+<ul>
+<li>測試方式：以本地Wiki文件進行<strong>可重現、規則式的檢索與回答驗證</strong>。此腳本實際讀取Wiki段落，確認答案有具體段落支撐；不是呼叫外部LLM API，也不是獨立AI審查。</li>
+<li>執行日期：2026-11-21</li>
+<li>源資料：<code>wiki/guides/first-trip-basics.md</code>（引用的S001官方原頁：<a href="https://www.japan.travel/en/plan/%EF%BC%89">https://www.japan.travel/en/plan/）</a></li>
+</ul>
+<h2>Q-S001-01：第一次赴日需要先確認哪些基本事項？</h2>
+<ul>
+<li>結果：PASS</li>
+<li>答案：依Wiki的教學示例，確認旅行資格、住宿與交通資訊、手機及充電設備、日圓與付款備案，以及目的地天氣。這不是日本政府規定的必辦清單。</li>
+<li>Wiki段落：<code>wiki/guides/first-trip-basics.md</code> → 「行前一週：整理一張自己的清單」</li>
+<li>片段（節錄）：<strong>以下為教學示例，不是JNTO公告的必辦清單。</strong> 可以用四組問題自我檢查：旅行資格是否已向權責來源確認？住宿及交通資訊是否容易取用？手機與充電設備是否能正常使用？日圓、卡片與付款備案是否準備妥當？另外再看目的地天氣與行李條件。逐一打勾，較容易發現缺口。可直接使用<a href="../wiki/concepts/pre-trip-checklist.html">行前確認清單</a>的簡表。</li>
+</ul>
+<h2>Q-S001-02：日本所有店都能刷卡嗎？</h2>
+<ul>
+<li>結果：PASS</li>
+<li>答案：不能保證所有商店均可刷卡。S001只說大城市許多店家通常接受信用卡，實際仍需向商家確認。</li>
+<li>Wiki段落：<code>wiki/guides/first-trip-basics.md</code> → 「常見問題（FAQ）」</li>
+<li>片段（節錄）：<strong>Q：日本是不是每間商店都能刷卡？</strong> 不是可以這樣保證。官方只描述大城市許多店家通常接受信用卡，仍須依實際商家確認。 <strong>Q：日本各地是否採不同時區？</strong> 不是。官方介紹日本全國使用同一時區，且沒有夏令時間。 <strong>Q：我的護照去日本可以免簽停留多久？</strong> S001沒有提供針對你的護照條件的答案。請查詢日本外務省最新規定或向日本使領館確認，不要從這篇文章推算天數。</li>
+</ul>
+<h2>Q-S001-03：台灣旅客可以免簽多久？</h2>
+<ul>
+<li>結果：PASS</li>
+<li>答案：S001未提供適用個別護照的免簽停留天數，因此無法據此回答；請查日本外務省或日本使領館最新資料。</li>
+<li>Wiki段落：<code>wiki/guides/first-trip-basics.md</code> → 「旅遊季節與旅行資格：變動資訊要回官方查」</li>
+<li>片段（節錄）：JNTO說明日本各地天氣差異可能很大。安排衣物與行程時，應以目的地和出發時的天氣資料為準，而非將某一城市的狀況當作日本全國通用。 簽證與入境規定則更需要小心。JNTO要求前往日本外務省或日本使領館查詢最新簽證資訊。這份入門資料<strong>不提供特定護照的免簽停留天數</strong>，也不能用來保證自己一定可以入境。若涉及國籍、護照類型、停留目的或有效期限，應另外取得權責機關的最新說明。</li>
+</ul>
+<p><strong>Query總結：3/3通過。</strong></p>
+<blockquote>
+<p>限制：上述為可重現的檢索／證據測試，並未測試外部生成式模型的自由問答或獨立審查。</p>
+</blockquote>
+</main><footer>旅日手帖｜課堂LLM Wiki實作 · 官方來源以文件內引用為準</footer></body></html>

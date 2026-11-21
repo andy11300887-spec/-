@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="旅日手帖LLM Wiki專題文件：S001 第一次正式Ingest｜驗收總結"><title>S001 第一次正式Ingest｜驗收總結｜旅日手帖｜日本自由行入門LLM Wiki</title><style>
+:root{--paper:#f7f2e9;--ink:#263936;--red:#a74c43;--muted:#60736c;--line:#ded3c4;--white:#fffdfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 system-ui,"Microsoft JhengHei",sans-serif}
+nav{background:#e7e7db;border-bottom:1px solid var(--line);padding:12px max(calc((100vw - 1120px)/2),22px);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px}
+nav strong{margin-right:auto;letter-spacing:.06em}nav a{color:#7f403a;text-decoration:none}main{max-width:980px;margin:40px auto;padding:36px 46px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3{line-height:1.35;color:#23453d;scroll-margin-top:24px}h1{font-size:31px;margin-top:.2em}h2{font-size:23px;margin-top:1.8em;padding-bottom:7px;border-bottom:1px solid var(--line)}h3{font-size:19px}a{color:#a34b3d;overflow-wrap:anywhere}p,li{line-height:1.85}blockquote{background:#f0f3ec;border-left:4px solid #7b9986;margin:1.4em 0;padding:6px 20px;color:#486158}blockquote p{margin:8px 0}
+code{background:#f1eadd;border-radius:4px;padding:2px 5px;font-size:.91em;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#203d35;color:#f1eee7;border-radius:9px;padding:18px;overflow-x:auto}pre code{color:inherit;background:transparent;padding:0}table{border-collapse:collapse;max-width:100%;width:100%;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#e9ede5}img{max-width:100%;border-radius:8px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 60px}
+@media(max-width:700px){main{margin:15px 10px;padding:24px 18px}nav{padding:12px 16px;gap:12px}h1{font-size:26px}table{display:block;overflow-x:auto}}
+</style></head>
+<body><nav><strong>旅日手帖 · 日本自由行入門</strong><a href="../index.html">成果首頁</a><a href="../slides/deck.html">12頁教學簡報</a><a href="../wiki/index.html">Wiki索引</a><a href="../workflow/graph.html">Graph / Loop</a><a href="../evidence/final_check_report.html">驗收紀錄</a></nav>
+<main><h1>S001 第一次正式Ingest｜驗收總結</h1>
+<h2>執行範圍及授權</h2>
+<ul>
+<li>來源：日本政府觀光局 JNTO <code>https://www.japan.travel/en/plan/</code>。</li>
+<li>依據：<code>proposals/S001_ingest_proposal.md</code>及使用者於本次對話明確核准該提案。</li>
+<li>核准範圍：S001的來源摘要、教學文章、行前清單，更新Wiki索引／日誌／來源登錄，執行Lint與Query，成功後才Git提交。</li>
+<li>其他S002–S006：均未進行Ingest；AGENTS.md及requirements.md未修改；HTML未生成。</li>
+</ul>
+<h2>正式寫入檔案</h2>
+<ol>
+<li><code>wiki/sources/S001-jnto-first-time.md</code>：官方來源欄位、保守摘要及來源界線。</li>
+<li><code>wiki/guides/first-trip-basics.md</code>：1,178個漢字的入門教學，包含教學示例與FAQ。</li>
+<li><code>wiki/concepts/pre-trip-checklist.md</code>：自行編排的非強制行前清單。</li>
+<li>同步更新 <code>wiki/index.md</code>、<code>wiki/log.md</code>與<code>sources/registry.csv</code>。</li>
+</ol>
+<h2>實際執行結果</h2>
+<table>
+<thead>
+<tr>
+  <th>檢查</th>
+  <th>使用工具</th>
+  <th>結果</th>
+  <th>證據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>結構檢查</td>
+  <td><code>python tests/validate_structure.py</code></td>
+  <td><strong>7/7 PASS</strong></td>
+  <td>重新執行可復現</td>
+</tr>
+<tr>
+  <td>本地Wiki Lint</td>
+  <td><code>python tests/lint_s001.py</code></td>
+  <td><strong>20/20 PASS</strong></td>
+  <td><code>S001_lint.json</code></td>
+</tr>
+<tr>
+  <td>規則式Wiki Query</td>
+  <td><code>python tests/query_s001.py</code></td>
+  <td><strong>3/3 PASS</strong></td>
+  <td><code>S001_query_results.md</code>、<code>.json</code></td>
+</tr>
+<tr>
+  <td>官方主頁內容對照</td>
+  <td>人工核對JNTO官網</td>
+  <td><strong>已完成</strong></td>
+  <td><code>S001_source_verification.md</code></td>
+</tr>
+<tr>
+  <td><code>git diff --check</code></td>
+  <td>Git</td>
+  <td><strong>PASS</strong>（提交前）</td>
+  <td>可於Git版本重現</td>
+</tr>
+<tr>
+  <td>獨立AI審查</td>
+  <td>另開新對話、只給來源與成品</td>
+  <td><strong>尚未執行</strong></td>
+  <td>不得聲稱已通過</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Query限制：</strong> 實作是本地檢索已建立的Wiki段落並核對答案關鍵證據，<strong>不是</strong>外部LLM的自由問答能力測試；後續若課堂要求Coding Agent實際回答，仍需另外進行並保存截圖。</p>
+<h2>Query問答節錄</h2>
+<ul>
+<li>Q1 第一次赴日基本準備？→ 依照教學示例整理旅行資格、聯絡網路、付款、天氣等，不將例子寫成法定要求。</li>
+<li>Q2 所有店都能刷卡？→ 不能這樣保證，需依實際商家接受方式判斷。</li>
+<li>Q3 特定護照免簽多久？→ S001不含適用天數，不自行推測；轉向日本外務省或日本使領館。</li>
+</ul>
+<h2>修正歷程</h2>
+<ul>
+<li>第一輪撰稿：文章漢字數稍多，刪減重複說明至1,178字，沒有為了湊字數捏造規定。</li>
+<li>第一次正式測試：本地Lint20/20、Query3/3通過。</li>
+<li>完成狀態更新後的回歸測試：結構7/7、Lint20/20、Query3/3通過。</li>
+<li><code>git diff --check</code>初次顯示CSV換行造成trailing whitespace，將CSV換行統一為LF後再檢查通過。</li>
+</ul>
+<h2>結論與下一關</h2>
+<p>S001依目前已核准的本地測試驗收通過，來源可追溯且重要動態問題未被寫成無來源的保證。完整作業至少需要5篇正式Ingest，目前完成<strong>1篇</strong>；S002–S006仍等待各自的討論與批准。</p>
+</main><footer>旅日手帖｜課堂LLM Wiki實作 · 官方來源以文件內引用為準</footer></body></html>

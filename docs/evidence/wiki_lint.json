@@ -1,0 +1,288 @@
+{
+  "stage": "wiki_lint",
+  "passed": true,
+  "passed_count": 55,
+  "total_count": 55,
+  "checks": [
+    {
+      "name": "6 sources registry",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 source page exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 guide and concept exist",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 proposal exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 metadata",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 guide Han 800–1200",
+      "passed": true,
+      "info": "1178"
+    },
+    {
+      "name": "S001 FAQ / examples / limitations",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 indexed",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S001 approved/truthful status",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 source page exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 guide and concept exist",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 proposal exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 metadata",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 guide Han 800–1200",
+      "passed": true,
+      "info": "906"
+    },
+    {
+      "name": "S002 FAQ / examples / limitations",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 indexed",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S002 approved/truthful status",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 source page exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 guide and concept exist",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 proposal exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 metadata",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 guide Han 800–1200",
+      "passed": true,
+      "info": "843"
+    },
+    {
+      "name": "S003 FAQ / examples / limitations",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 indexed",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S003 approved/truthful status",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 source page exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 guide and concept exist",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 proposal exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 metadata",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 guide Han 800–1200",
+      "passed": true,
+      "info": "876"
+    },
+    {
+      "name": "S004 FAQ / examples / limitations",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 indexed",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S004 approved/truthful status",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 source page exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 guide and concept exist",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 proposal exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 metadata",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 guide Han 800–1200",
+      "passed": true,
+      "info": "840"
+    },
+    {
+      "name": "S005 FAQ / examples / limitations",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 indexed",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S005 approved/truthful status",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 source page exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 guide and concept exist",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 proposal exists",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 metadata",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 guide Han 800–1200",
+      "passed": true,
+      "info": "859"
+    },
+    {
+      "name": "S006 FAQ / examples / limitations",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 indexed",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "S006 approved/truthful status",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "all local Markdown links resolve",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "no plain HTTP references",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "no duplicate long wiki paragraphs",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "AGENTS under 12k",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "no risky blanket factual claim in slides",
+      "passed": true,
+      "info": ""
+    },
+    {
+      "name": "6 source-to-guide-to-concept triples",
+      "passed": true,
+      "info": ""
+    }
+  ],
+  "limitations": [
+    "Static source matching cannot replace a fresh independent fact review.",
+    "External HTTP websites not re-fetched in this offline Lint.",
+    "S002-S006 received a global completion instruction but no per-source user approval."
+  ]
+}

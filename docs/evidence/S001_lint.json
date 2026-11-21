@@ -1,0 +1,112 @@
+{
+  "scope": "S001 local Lint",
+  "passed": true,
+  "pass_count": 20,
+  "total_count": 20,
+  "checks": [
+    {
+      "check": "source exists",
+      "pass": true,
+      "detail": "wiki/sources/S001-jnto-first-time.md"
+    },
+    {
+      "check": "guide exists",
+      "pass": true,
+      "detail": "wiki/guides/first-trip-basics.md"
+    },
+    {
+      "check": "concept exists",
+      "pass": true,
+      "detail": "wiki/concepts/pre-trip-checklist.md"
+    },
+    {
+      "check": "S001 primary source verified JNTO domain",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Full traceable source metadata",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Guide has expected sections",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Guide ~800-1200 Han characters",
+      "pass": true,
+      "detail": "1178 Han characters"
+    },
+    {
+      "check": "Guide explicitly distinguishes teaching examples",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Guide S001 source link and ID",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Concept labeled nonmandatory and with reference",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "No invented visa period/currency rate",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Uncertainty on visa and card acceptance explicit",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Conflicts and out of scope marked",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Index has 3 S001 links",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Log records user approval and pending/check result",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Registry S001 present and ingested",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "S001 original three pages remain present",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "All internal Markdown links resolve",
+      "pass": true,
+      "detail": "9 S001 knowledge edges"
+    },
+    {
+      "check": "All three S001 pages cross-link",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "No duplicate long paragraphs across S001 pages",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "not_covered": [
+    "External website link checks are verified separately using browsing; not retested here",
+    "Independent AI review in a fresh conversation is not part of this deterministic Lint"
+  ]
+}

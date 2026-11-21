@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="旅日手帖LLM Wiki專題文件：旅日手帖｜實作心得與反思"><title>旅日手帖｜實作心得與反思｜旅日手帖｜日本自由行入門LLM Wiki</title><style>
+:root{--paper:#f7f2e9;--ink:#263936;--red:#a74c43;--muted:#60736c;--line:#ded3c4;--white:#fffdfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 system-ui,"Microsoft JhengHei",sans-serif}
+nav{background:#e7e7db;border-bottom:1px solid var(--line);padding:12px max(calc((100vw - 1120px)/2),22px);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px}
+nav strong{margin-right:auto;letter-spacing:.06em}nav a{color:#7f403a;text-decoration:none}main{max-width:980px;margin:40px auto;padding:36px 46px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3{line-height:1.35;color:#23453d;scroll-margin-top:24px}h1{font-size:31px;margin-top:.2em}h2{font-size:23px;margin-top:1.8em;padding-bottom:7px;border-bottom:1px solid var(--line)}h3{font-size:19px}a{color:#a34b3d;overflow-wrap:anywhere}p,li{line-height:1.85}blockquote{background:#f0f3ec;border-left:4px solid #7b9986;margin:1.4em 0;padding:6px 20px;color:#486158}blockquote p{margin:8px 0}
+code{background:#f1eadd;border-radius:4px;padding:2px 5px;font-size:.91em;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#203d35;color:#f1eee7;border-radius:9px;padding:18px;overflow-x:auto}pre code{color:inherit;background:transparent;padding:0}table{border-collapse:collapse;max-width:100%;width:100%;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#e9ede5}img{max-width:100%;border-radius:8px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 60px}
+@media(max-width:700px){main{margin:15px 10px;padding:24px 18px}nav{padding:12px 16px;gap:12px}h1{font-size:26px}table{display:block;overflow-x:auto}}
+</style></head>
+<body><nav><strong>旅日手帖 · 日本自由行入門</strong><a href="../index.html">成果首頁</a><a href="../slides/deck.html">12頁教學簡報</a><a href="../wiki/index.html">Wiki索引</a><a href="../workflow/graph.html">Graph / Loop</a><a href="../evidence/final_check_report.html">驗收紀錄</a></nav>
+<main><h1>旅日手帖｜實作心得與反思</h1>
+<h2>1. 最終做出了什麼</h2>
+<p>這次以「第一次日本自由行」為主題，把日本政府觀光局六個官方主題頁整理成LLM Wiki。每個來源都有提案、來源摘要、完整教學文章及可重用概念頁，再由Wiki產生12頁HTML教學簡報。簡報包含章節選擇、上一頁／下一頁、預算試算、行前清單和五題測驗。網址連結和資料查閱日期都留在專案內，方便老師檢查。</p>
+<h2>2. 為什麼選Graph / Loop</h2>
+<p>一開始最簡單的作法是直接要求AI做HTML，但這樣內容很難檢查。我採用Graph把過程拆成「官方資料 → Wiki → Wiki檢索 → 證據卡 → 大綱 → 逐頁稿 → HTML → 瀏覽器檢查」。每個節點都有產出檔案，也明定若錯誤要退回哪一個節點。Loop則用來針對單一失敗節點重做，最多三次，避免整份無限重跑。</p>
+<h2>3. 真正執行時出現的問題</h2>
+<ul>
+<li><strong>問題一：證據卡連結路徑錯誤。</strong> 第一次Wiki Lint得到54/55，原因是<code>slides/cards/</code>裡的相對路徑少了一層<code>../</code>。我沒有重新生成文章，而是修正證據卡產生器，讓連結改到正確的位置，之後重新跑Lint得到55/55。</li>
+<li><strong>問題二：Wiki Query中的用詞不夠一致。</strong> 第一輪規則式Query只有10/12。查詢期待「不能保證票券省錢」及「手機靜音」的對應敘述，但文章採用不同寫法。經確認JNTO原始內容後，只修正S002與S005教學文章的相關句子，第二輪Query達12/12。這也顯示固定關鍵字測試的限制：字面不符不一定代表事實錯誤。</li>
+<li><strong>問題三：本地檔案在測試瀏覽器被封鎖。</strong> 初次用<code>file://</code>執行Chromium自動化時，環境回傳<code>ERR_BLOCKED_BY_ADMINISTRATOR</code>。因此在Playwright測試中改用<code>set_content</code>載入相同HTML檔案，而不是修改教學內容本身。測試後12頁切換、預算計算、測驗與行動版排版通過19/19項檢查。</li>
+</ul>
+<h2>4. 我把檢查往前移到哪裡</h2>
+<p>如果只在最後才測網頁，證據卡路徑錯誤會很晚才發現。因此我把「Markdown連結與來源ID驗證」提前到<strong>證據卡建立後、產生逐頁稿之前</strong>。查詢用詞的問題則先在Wiki階段處理，不等HTML完成才回頭改文章。這樣Graph的大範圍回退變少，錯在哪個節點就只修那個節點。</p>
+<h2>5. 為什麼不能把所有結果都寫成全過</h2>
+<p>本專案的55/55 Lint是<strong>本地靜態檢查</strong>，12/12 Query是<strong>規則式檢索與證據測試</strong>，19/19是<strong>Chromium互動測試</strong>。它們能證明檔案、連結、公式及互動有實際檢查，但不能替代全新的AI對話對官方來源的獨立忠實度審查，也不能保證幾個月後的交通票價或入境規則仍相同。</p>
+<h2>6. 人工確認紀錄的差異</h2>
+<p>S001有使用者對單篇提案的明確批准。S002–S006則因使用者後續說「那你先完成，我再一次下載」，本次將它視為剩餘工作的一次性整體授權；<strong>未有逐篇獨立人工核准</strong>。雖然每篇仍保留了提案與檢查結果，但若老師嚴格要求逐篇批准，仍需補做逐篇審查並記錄。</p>
+<h2>7. 本次學到的事</h2>
+<p>我發現AI能快速整理資料與產出網頁，但真正重要的是先講清楚什麼能用、什麼不能自行推論，以及錯誤出現時要回到哪一個節點。和單純叫AI「幫我做好」相比，拆成可檢查的工作流程比較容易知道問題在哪裡，也比較能說明整份作業是怎麼完成的。下一次我會更早測試來源連結和內容用詞，減少後面修改的時間。</p>
+</main><footer>旅日手帖｜課堂LLM Wiki實作 · 官方來源以文件內引用為準</footer></body></html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="旅日手帖LLM Wiki專題文件：旅日手帖｜最終驗收與證據索引"><title>旅日手帖｜最終驗收與證據索引｜旅日手帖｜日本自由行入門LLM Wiki</title><style>
+:root{--paper:#f7f2e9;--ink:#263936;--red:#a74c43;--muted:#60736c;--line:#ded3c4;--white:#fffdfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 system-ui,"Microsoft JhengHei",sans-serif}
+nav{background:#e7e7db;border-bottom:1px solid var(--line);padding:12px max(calc((100vw - 1120px)/2),22px);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px}
+nav strong{margin-right:auto;letter-spacing:.06em}nav a{color:#7f403a;text-decoration:none}main{max-width:980px;margin:40px auto;padding:36px 46px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3{line-height:1.35;color:#23453d;scroll-margin-top:24px}h1{font-size:31px;margin-top:.2em}h2{font-size:23px;margin-top:1.8em;padding-bottom:7px;border-bottom:1px solid var(--line)}h3{font-size:19px}a{color:#a34b3d;overflow-wrap:anywhere}p,li{line-height:1.85}blockquote{background:#f0f3ec;border-left:4px solid #7b9986;margin:1.4em 0;padding:6px 20px;color:#486158}blockquote p{margin:8px 0}
+code{background:#f1eadd;border-radius:4px;padding:2px 5px;font-size:.91em;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#203d35;color:#f1eee7;border-radius:9px;padding:18px;overflow-x:auto}pre code{color:inherit;background:transparent;padding:0}table{border-collapse:collapse;max-width:100%;width:100%;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#e9ede5}img{max-width:100%;border-radius:8px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 60px}
+@media(max-width:700px){main{margin:15px 10px;padding:24px 18px}nav{padding:12px 16px;gap:12px}h1{font-size:26px}table{display:block;overflow-x:auto}}
+</style></head>
+<body><nav><strong>旅日手帖 · 日本自由行入門</strong><a href="../index.html">成果首頁</a><a href="../slides/deck.html">12頁教學簡報</a><a href="../wiki/index.html">Wiki索引</a><a href="../workflow/graph.html">Graph / Loop</a><a href="../evidence/final_check_report.html">驗收紀錄</a></nav>
+<main><h1>旅日手帖｜最終驗收與證據索引</h1>
+<p><strong>2026-11-21；所有記錄可在專案內重新開啟。</strong></p>
+<h2>結果總覽</h2>
+<table>
+<thead>
+<tr>
+  <th>項目</th>
+  <th style="text-align:right">結果</th>
+  <th>可重現方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>官方來源筆數</td>
+  <td style="text-align:right">6篇</td>
+  <td><code>sources/registry.csv</code></td>
+</tr>
+<tr>
+  <td>正式知識頁</td>
+  <td style="text-align:right">18頁</td>
+  <td><code>wiki/index.md</code>（每篇來源/教學/概念三頁）</td>
+</tr>
+<tr>
+  <td>本地Wiki Lint</td>
+  <td style="text-align:right">55/55通過</td>
+  <td><code>python tests/lint_wiki.py</code></td>
+</tr>
+<tr>
+  <td>規則式Wiki Query</td>
+  <td style="text-align:right">12/12通過</td>
+  <td><code>python tests/query_wiki.py</code></td>
+</tr>
+<tr>
+  <td>HTML頁數</td>
+  <td style="text-align:right">12頁</td>
+  <td><code>slides/deck.html</code></td>
+</tr>
+<tr>
+  <td>Chromium互動與排版</td>
+  <td style="text-align:right">19/19通過</td>
+  <td><code>python tests/check_slides.py</code></td>
+</tr>
+<tr>
+  <td>獨立新對話AI忠實度審查</td>
+  <td style="text-align:right"><strong>未執行</strong></td>
+  <td>需要另外進行</td>
+</tr>
+<tr>
+  <td>HTML網站本地連結</td>
+  <td style="text-align:right">13/13可解析</td>
+  <td><code>python tests/check_site_links.py</code></td>
+</tr>
+<tr>
+  <td>可執行的Graph驗證</td>
+  <td style="text-align:right">7/7關卡通過</td>
+  <td><code>python workflow/run_workflow.py</code></td>
+</tr>
+<tr>
+  <td>Git歷史</td>
+  <td style="text-align:right">存在</td>
+  <td><code>git log --oneline</code></td>
+</tr>
+</tbody>
+</table>
+<h2>首輪問題與修正</h2>
+<ol>
+<li>Wiki Lint第一次54/55：<code>slides/cards/</code>路徑層級不正確；只修證據卡生成器後通過。</li>
+<li>Query第一次10/12：兩條期待用詞與文章表述不完全一致；核對官方來源後修正S002/S005相應段落，之後通過。</li>
+<li>瀏覽器首次載入<code>file://</code>受測試環境限制；改以Playwright載入HTML內容並執行相同JS功能測試；通過19/19。</li>
+</ol>
+<h2>證據檔案</h2>
+<ul>
+<li><code>evidence/wiki_lint.md</code> 與 <code>.json</code>：實際靜態檢查報告。</li>
+<li><code>evidence/wiki_query.md</code> 與 <code>.json</code>：12條查詢與依據。</li>
+<li><code>evidence/slides_browser_test.md</code> 與 <code>.json</code>：頁數、切換、預算、測驗、桌機與手機檢查。</li>
+<li><code>evidence/slides_desktop_cover.png</code>：桌機封面截圖。</li>
+<li><code>evidence/slides_desktop_budget.png</code>：預算計算器實測截圖（試算輸入值）。</li>
+<li><code>evidence/slides_desktop_quiz.png</code>：5題測驗分數截圖。</li>
+<li><code>evidence/slides_mobile_cover.png</code>：手機版截圖。</li>
+<li><code>proposals/S001_ingest_proposal.md</code>–<code>S006_ingest_proposal.md</code>：各篇匯入範圍、來源界線與測試目標。</li>
+<li><code>evidence/S001_*</code>：前階段S001單獨批准與檢查紀錄；仍保留原測試結果。</li>
+<li><code>slides/report.md</code>：學習心得及實際流程修改理由。</li>
+</ul>
+<h2>未完成與誠實揭露</h2>
+<ul>
+<li><strong>人工作業流程</strong>：S001有逐篇獨立明確批准；S002–S006為使用者後續「先完成」的一次性整體授權。保留逐篇提案，但不冒充逐篇人工批准。</li>
+<li><strong>獨立AI審查</strong>：尚未在全新對話中執行，不能以本地Lint或關鍵字Query替代。</li>
+<li><strong>即時旅遊資訊</strong>：不保證已核對網站在使用者旅行當日仍是最新資料，應依權責機關公告更新。</li>
+</ul>
+<h2>參考教材</h2>
+<p>課堂PDF《10把你的工作拆成AI能做的流程》：訪談與先討論後建Wiki、Loop停止規則、Graph分關與HTML簡報驗證。</p>
+</main><footer>旅日手帖｜課堂LLM Wiki實作 · 官方來源以文件內引用為準</footer></body></html>

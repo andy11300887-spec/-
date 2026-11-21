@@ -1,0 +1,113 @@
+{
+  "type": "headless Chromium Playwright",
+  "passed_count": 19,
+  "total": 19,
+  "passed": true,
+  "checks": [
+    {
+      "check": "12 slide nodes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "First slide visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Only one visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Next navigation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Keyboard navigation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Direct navigation calculator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Calculator 2ppl/5days/JPY maths",
+      "passed": true,
+      "detail": "¥123,000"
+    },
+    {
+      "check": "Quiz slide renders 3 choices",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Quiz explanation 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Quiz explanation 2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Quiz explanation 3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Quiz explanation 4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Quiz explanation 5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Quiz score 5/5",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No javascript pageerrors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No horizontal overflow in desktop slides",
+      "passed": true,
+      "detail": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    },
+    {
+      "check": "Mobile slide visible",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No body horizontal overflow mobile",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Mobile Next button works",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "screenshots": [
+    "slides_desktop_cover.png",
+    "slides_desktop_budget.png",
+    "slides_desktop_quiz.png",
+    "slides_mobile_cover.png"
+  ],
+  "notes": [
+    "Source fidelity and external JNTO link availability not proven by browser tests.",
+    "Visual rendering inspected via screenshots; testing done against file:// offline page."
+  ]
+}

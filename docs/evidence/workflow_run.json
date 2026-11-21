@@ -1,0 +1,55 @@
+{
+  "run_date": "2026-11-21",
+  "scope": "Executable local Graph checks; not an AI autonomous agent",
+  "passed": true,
+  "gate_count": 7,
+  "gates": [
+    {
+      "node": "G0 project structure",
+      "passed": true,
+      "message": "Result: 7 / 7",
+      "on_failure_return_to": "G0"
+    },
+    {
+      "node": "G1 source and proposal coverage",
+      "passed": true,
+      "message": "completed_source_rows=6, proposals=6; S002-S006 overall authorization only",
+      "on_failure_return_to": "G1"
+    },
+    {
+      "node": "G2 Wiki Lint",
+      "passed": true,
+      "message": "Result: 55 / 55",
+      "on_failure_return_to": "G2"
+    },
+    {
+      "node": "G3 Wiki Query",
+      "passed": true,
+      "message": "Result: 12 / 12",
+      "on_failure_return_to": "G2"
+    },
+    {
+      "node": "G4-G6 evidence/outline/draft assets",
+      "passed": true,
+      "message": "12 evidence cards, 12 drafts, 12-page outline and source list",
+      "on_failure_return_to": "G4"
+    },
+    {
+      "node": "G7 HTML browser check",
+      "passed": true,
+      "message": "Result: 19 / 19",
+      "on_failure_return_to": "G7"
+    },
+    {
+      "node": "G8 local links",
+      "passed": true,
+      "message": "Local links tested 13 broken 0",
+      "on_failure_return_to": "G7"
+    }
+  ],
+  "limitations": [
+    "R04 per-source approval is not complete for S002-S006.",
+    "The independent new-conversation AI factuality review remains unperformed.",
+    "This runner stops rather than automatically fabricating a fix or looping with unchanged inputs."
+  ]
+}

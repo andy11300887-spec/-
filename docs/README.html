@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="旅日手帖LLM Wiki專題文件：旅日手帖｜日本自由行入門 LLM Wiki（完成整理版）"><title>旅日手帖｜日本自由行入門 LLM Wiki（完成整理版）｜旅日手帖｜日本自由行入門LLM Wiki</title><style>
+:root{--paper:#f7f2e9;--ink:#263936;--red:#a74c43;--muted:#60736c;--line:#ded3c4;--white:#fffdfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 system-ui,"Microsoft JhengHei",sans-serif}
+nav{background:#e7e7db;border-bottom:1px solid var(--line);padding:12px max(calc((100vw - 1120px)/2),22px);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px}
+nav strong{margin-right:auto;letter-spacing:.06em}nav a{color:#7f403a;text-decoration:none}main{max-width:980px;margin:40px auto;padding:36px 46px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3{line-height:1.35;color:#23453d;scroll-margin-top:24px}h1{font-size:31px;margin-top:.2em}h2{font-size:23px;margin-top:1.8em;padding-bottom:7px;border-bottom:1px solid var(--line)}h3{font-size:19px}a{color:#a34b3d;overflow-wrap:anywhere}p,li{line-height:1.85}blockquote{background:#f0f3ec;border-left:4px solid #7b9986;margin:1.4em 0;padding:6px 20px;color:#486158}blockquote p{margin:8px 0}
+code{background:#f1eadd;border-radius:4px;padding:2px 5px;font-size:.91em;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#203d35;color:#f1eee7;border-radius:9px;padding:18px;overflow-x:auto}pre code{color:inherit;background:transparent;padding:0}table{border-collapse:collapse;max-width:100%;width:100%;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#e9ede5}img{max-width:100%;border-radius:8px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 60px}
+@media(max-width:700px){main{margin:15px 10px;padding:24px 18px}nav{padding:12px 16px;gap:12px}h1{font-size:26px}table{display:block;overflow-x:auto}}
+</style></head>
+<body><nav><strong>旅日手帖 · 日本自由行入門</strong><a href="index.html">成果首頁</a><a href="slides/deck.html">12頁教學簡報</a><a href="wiki/index.html">Wiki索引</a><a href="workflow/graph.html">Graph / Loop</a><a href="evidence/final_check_report.html">驗收紀錄</a></nav>
+<main><h1>旅日手帖｜日本自由行入門 LLM Wiki（完成整理版）</h1>
+<blockquote>
+<p>繁體中文教學專題，來源查核：2026-11-21。主要讀者：第一次自行安排赴日旅行的人。</p>
+</blockquote>
+<h2>最簡單的開啟方式</h2>
+<ol>
+<li>解壓縮<strong>整個ZIP壓縮檔</strong>，保持資料夾結構不變。</li>
+<li>用Chrome或Edge雙擊專案根目錄的 <strong><code>index.html</code></strong>，這是六項作業要求的成果總覽。</li>
+<li>點「開始看12頁教學簡報」，或直接開 <code>slides/deck.html</code>。可用左右鍵、側欄或下方按鈕切換；試算器可輸入自訂金額，測驗可立即作答。</li>
+<li>需要核對內容時查看<code>wiki/index.md</code>、<code>evidence/final_check_report.md</code>和<code>workflow/graph.md</code>。若瀏覽器不展示Markdown，請用VS Code、Antigravity或記事本開啟。</li>
+</ol>
+<p>整個教學簡報的CSS與JavaScript都在HTML檔案內，不依賴外部CDN或付費API。Wiki官網連結需要網路才能開啟。</p>
+<h2>作業內容</h2>
+<ul>
+<li><strong>Wiki</strong>：6篇JNTO官方主題頁；每篇均有來源摘要、完整教學、概念頁，共18份正式Wiki頁。</li>
+<li><strong>資料取得</strong>：<code>sources/registry.csv</code>、<code>proposals/</code>與<code>wiki/log.md</code>。</li>
+<li><strong>Graph/Loop</strong>：<code>workflow/graph.md</code>與<code>workflow/loop.md</code>，包括節點退回與3輪上限。</li>
+<li><strong>HTML</strong>：<code>index.html</code>成果總覽、<code>slides/deck.html</code>十二頁互動簡報。</li>
+<li><strong>證據與反思</strong>：<code>evidence/final_check_report.md</code>與<code>slides/report.md</code>；附瀏覽器截圖。</li>
+<li><strong>Git</strong>：包含<code>.git</code>歷史，可查看版本變更。</li>
+</ul>
+<h2>本地重新驗證（安裝Python與Playwright時）</h2>
+<pre><code class="language-bash">python workflow/run_workflow.py
+python tests/lint_wiki.py
+python tests/query_wiki.py
+python tests/check_slides.py
+</code></pre>
+<p>最後一項使用Chromium及Python Playwright。若電腦未安裝Playwright或Chromium，<strong>仍可直接開啟HTML簡報</strong>，不影響一般觀看與操作。</p>
+<h2>非常重要：驗收界線</h2>
+<p>S001有單篇明確批准，S002–S006由使用者後續的「先完成」指示一次性授權，<strong>沒有逐篇單獨審查紀錄</strong>。這是和最初規格中「逐篇人工核准」不同的地方，已在每篇提案中註明。</p>
+<p>本地Lint、Query與瀏覽器測試都已實際執行；但<strong>獨立新對話AI忠實度審查尚未執行</strong>。任何即時票價、簽證或特殊交通使用條件都必須在實際旅行前以官方權責網站再確認。</p>
+<h2>參考來源與課程脈絡</h2>
+<p>日本政府觀光局（JNTO）官方主題頁：First-Time Visitor Info、Transportation in Japan、IC Travel Cards、Tips for Budget Travels、Custom &amp; Manners、Weather &amp; Geography。完整網址及查閱時間見<code>sources/registry.csv</code>與每篇Wiki來源頁。</p>
+<p>課堂教材：《10 把你的工作拆成AI能做的流程》；本專題以「先討論後生成」、「明確完成標準」、「Graph決定流程、Loop局部修正」為設計原則。</p>
+</main><footer>旅日手帖｜課堂LLM Wiki實作 · 官方來源以文件內引用為準</footer></body></html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="旅日手帖LLM Wiki專題文件：Graph規格與執行紀錄｜旅日手帖"><title>Graph規格與執行紀錄｜旅日手帖｜旅日手帖｜日本自由行入門LLM Wiki</title><style>
+:root{--paper:#f7f2e9;--ink:#263936;--red:#a74c43;--muted:#60736c;--line:#ded3c4;--white:#fffdfa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.8 system-ui,"Microsoft JhengHei",sans-serif}
+nav{background:#e7e7db;border-bottom:1px solid var(--line);padding:12px max(calc((100vw - 1120px)/2),22px);display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:14px}
+nav strong{margin-right:auto;letter-spacing:.06em}nav a{color:#7f403a;text-decoration:none}main{max-width:980px;margin:40px auto;padding:36px 46px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+h1,h2,h3{line-height:1.35;color:#23453d;scroll-margin-top:24px}h1{font-size:31px;margin-top:.2em}h2{font-size:23px;margin-top:1.8em;padding-bottom:7px;border-bottom:1px solid var(--line)}h3{font-size:19px}a{color:#a34b3d;overflow-wrap:anywhere}p,li{line-height:1.85}blockquote{background:#f0f3ec;border-left:4px solid #7b9986;margin:1.4em 0;padding:6px 20px;color:#486158}blockquote p{margin:8px 0}
+code{background:#f1eadd;border-radius:4px;padding:2px 5px;font-size:.91em;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#203d35;color:#f1eee7;border-radius:9px;padding:18px;overflow-x:auto}pre code{color:inherit;background:transparent;padding:0}table{border-collapse:collapse;max-width:100%;width:100%;font-size:14px}th,td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}th{background:#e9ede5}img{max-width:100%;border-radius:8px}hr{border:0;border-top:1px solid var(--line);margin:30px 0}footer{text-align:center;font-size:12px;color:var(--muted);margin:30px 0 60px}
+@media(max-width:700px){main{margin:15px 10px;padding:24px 18px}nav{padding:12px 16px;gap:12px}h1{font-size:26px}table{display:block;overflow-x:auto}}
+</style></head>
+<body><nav><strong>旅日手帖 · 日本自由行入門</strong><a href="../index.html">成果首頁</a><a href="../slides/deck.html">12頁教學簡報</a><a href="../wiki/index.html">Wiki索引</a><a href="../workflow/graph.html">Graph / Loop</a><a href="../evidence/final_check_report.html">驗收紀錄</a></nav>
+<main><figure><img src="graph.svg" alt="旅日手帖Graph流程與退回關卡圖"><figcaption>流程概觀：有錯只退回相關節點，來源不足停止。</figcaption></figure><h1>Graph規格與執行紀錄｜旅日手帖</h1>
+<blockquote>
+<p>Graph先決定「誰在控制」，Loop只修出錯的節點。所有狀態應由檔案及實測報告決定，不能由生成模型自行宣告。</p>
+</blockquote>
+<pre><code class="language-mermaid">flowchart TD
+ A[需求確認] --&gt; B[逐篇來源提案]
+ B --&gt; C[Wiki寫入]
+ C --&gt; D{Wiki Lint + Query}
+ D --&gt;|失敗| C
+ D --&gt;|通過| E[檢索已寫入Wiki]
+ E --&gt; F{至少3份相關知識?}
+ F --&gt;|不足| STOP[停止補來源]
+ F --&gt;|足夠| G[證據卡]
+ G --&gt; H{卡片連結 / 來源正確?}
+ H --&gt;|否| G
+ H --&gt;|是| I[12頁大綱]
+ I --&gt; J[逐頁稿]
+ J --&gt; K{忠實度 / 覆蓋率檢查}
+ K --&gt;|失敗| J
+ K --&gt;|通過| L[HTML渲染]
+ L --&gt; M{瀏覽器互動 / 排版檢查}
+ M --&gt;|失敗| L
+ M --&gt;|通過| N[成果與反思]
+</code></pre>
+<table>
+<thead>
+<tr>
+  <th>節點</th>
+  <th>輸入</th>
+  <th>產出</th>
+  <th>可執行檢查</th>
+  <th>失敗回退</th>
+  <th>本次實際執行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>G0 需求確認</td>
+  <td>10題訪談</td>
+  <td><code>requirements.md</code>、<code>AGENTS.md</code></td>
+  <td>人工確認</td>
+  <td>停止</td>
+  <td>10項已確認</td>
+</tr>
+<tr>
+  <td>G1 個別Ingest提案</td>
+  <td>JNTO官方主題頁</td>
+  <td><code>proposals/S00*.md</code></td>
+  <td>來源/檔案異動審閱</td>
+  <td>G1</td>
+  <td>6份提案；S001單獨批准，S002–S006一次性整體授權</td>
+</tr>
+<tr>
+  <td>G2 Wiki寫入</td>
+  <td>提案及官方來源</td>
+  <td>6份來源摘要、6份指南、6份概念</td>
+  <td><code>tests/lint_wiki.py</code>、<code>tests/query_wiki.py</code></td>
+  <td>G2、G1</td>
+  <td>已執行；55/55及12/12</td>
+</tr>
+<tr>
+  <td>G3 Wiki檢索</td>
+  <td>6份既有Wiki指南</td>
+  <td><code>slides/sources.md</code></td>
+  <td>來源數量至少3</td>
+  <td>G2或停止</td>
+  <td>6份已整理來源</td>
+</tr>
+<tr>
+  <td>G4 證據卡</td>
+  <td>Wiki指南</td>
+  <td><code>slides/cards/card-*.md</code></td>
+  <td>本地連結與來源ID</td>
+  <td>G3</td>
+  <td>12份，首次路徑錯誤已局部修正</td>
+</tr>
+<tr>
+  <td>G5 大綱</td>
+  <td>證據卡</td>
+  <td><code>slides/outline.md</code></td>
+  <td>頁數、主題涵蓋</td>
+  <td>G4</td>
+  <td>12頁；<strong>未取得獨立逐頁人工批准</strong></td>
+</tr>
+<tr>
+  <td>G6 逐頁稿</td>
+  <td>大綱與證據卡</td>
+  <td><code>slides/drafts/slide-*.md</code></td>
+  <td>來源ID、段落一致性</td>
+  <td>G4或G6</td>
+  <td>12份；未做獨立新對話AI忠實度審查</td>
+</tr>
+<tr>
+  <td>G7 HTML渲染</td>
+  <td>逐頁稿</td>
+  <td><code>slides/deck.html</code></td>
+  <td>Playwright/Chromium互動測試</td>
+  <td>G7；內容問題回G6</td>
+  <td>19/19瀏覽器測試通過</td>
+</tr>
+<tr>
+  <td>G8 成果</td>
+  <td>所有檔案/測試</td>
+  <td><code>index.html</code>、<code>evidence/</code>、<code>slides/report.md</code></td>
+  <td>資料夾完整、git狀態</td>
+  <td>回到失敗關卡</td>
+  <td>已產生紀錄</td>
+</tr>
+</tbody>
+</table>
+<h3>可執行的Graph原型</h3>
+<p>執行 <code>python workflow/run_workflow.py</code>，以G0–G8分關依序檢查；失敗時立即停止並回報最近節點。已執行的紀錄在 <code>evidence/workflow_run.json</code>。此腳本不會呼叫外部LLM，也不會自行改寫來源或把未批准資料冒充人工核准。</p>
+<h3>重要說明</h3>
+<ul>
+<li>大圈盡量少轉：如果證據卡連結出錯，不重新Ingest全部文章。</li>
+<li>小圈就地處理：若預算試算有錯，先修HTML的計算邏輯與測試。</li>
+<li>每個Loop最多3輪；來源不足或有重大衝突即停下並標記。</li>
+<li>S002–S006的授權是整體完成指示，不等同逐篇人工核准。</li>
+</ul>
+</main><footer>旅日手帖｜課堂LLM Wiki實作 · 官方來源以文件內引用為準</footer></body></html>

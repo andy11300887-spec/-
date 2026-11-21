@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "id": "Q-S001-01",
+      "question": "第一次赴日需要先確認哪些基本事項？",
+      "section": "行前一週：整理一張自己的清單",
+      "required": [
+        "旅行資格",
+        "手機",
+        "日圓",
+        "天氣"
+      ],
+      "expected": "covered",
+      "answer": "依Wiki的教學示例，確認旅行資格、住宿與交通資訊、手機及充電設備、日圓與付款備案，以及目的地天氣。這不是日本政府規定的必辦清單。",
+      "passed": true,
+      "evidence_file": "wiki/guides/first-trip-basics.md",
+      "evidence_excerpt": "**以下為教學示例，不是JNTO公告的必辦清單。** 可以用四組問題自我檢查：旅行資格是否已向權責來源確認？住宿及交通資訊是否容易取用？手機與充電設備是否能正常使用？日圓、卡片與付款備案是否準備妥當？另外再看目的地天氣與行李條件。逐一打勾，較容易發現缺口。可直接使用[行前確認清單](../concepts/pre-trip-checklist.md)的簡表。",
+      "primary_source": "https://www.japan.travel/en/plan/"
+    },
+    {
+      "id": "Q-S001-02",
+      "question": "日本所有店都能刷卡嗎？",
+      "section": "常見問題（FAQ）",
+      "required": [
+        "每間商店",
+        "不是可以這樣保證"
+      ],
+      "expected": "qualified",
+      "answer": "不能保證所有商店均可刷卡。S001只說大城市許多店家通常接受信用卡，實際仍需向商家確認。",
+      "passed": true,
+      "evidence_file": "wiki/guides/first-trip-basics.md",
+      "evidence_excerpt": "**Q：日本是不是每間商店都能刷卡？** 不是可以這樣保證。官方只描述大城市許多店家通常接受信用卡，仍須依實際商家確認。 **Q：日本各地是否採不同時區？** 不是。官方介紹日本全國使用同一時區，且沒有夏令時間。 **Q：我的護照去日本可以免簽停留多久？** S001沒有提供針對你的護照條件的答案。請查詢日本外務省最新規定或向日本使領館確認，不要從這篇文章推算天數。",
+      "primary_source": "https://www.japan.travel/en/plan/"
+    },
+    {
+      "id": "Q-S001-03",
+      "question": "台灣旅客可以免簽多久？",
+      "section": "旅遊季節與旅行資格：變動資訊要回官方查",
+      "required": [
+        "日本外務省",
+        "不提供特定護照的免簽停留天數"
+      ],
+      "expected": "insufficient",
+      "answer": "S001未提供適用個別護照的免簽停留天數，因此無法據此回答；請查日本外務省或日本使領館最新資料。",
+      "passed": true,
+      "evidence_file": "wiki/guides/first-trip-basics.md",
+      "evidence_excerpt": "JNTO說明日本各地天氣差異可能很大。安排衣物與行程時，應以目的地和出發時的天氣資料為準，而非將某一城市的狀況當作日本全國通用。 簽證與入境規定則更需要小心。JNTO要求前往日本外務省或日本使領館查詢最新簽證資訊。這份入門資料**不提供特定護照的免簽停留天數**，也不能用來保證自己一定可以入境。若涉及國籍、護照類型、停留目的或有效期限，應另外取得權責機關的最新說明。",
+      "primary_source": "https://www.japan.travel/en/plan/"
+    }
+  ]
+}
